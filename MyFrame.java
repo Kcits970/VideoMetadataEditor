@@ -27,11 +27,12 @@ public class MyFrame extends JFrame {
 
         main.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(5,5,5,5);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridheight = 2;
-        constraints.fill = GridBagConstraints.BOTH;
         main.add(videoSelectionPanel, constraints);
 
         constraints.gridx = 1;
