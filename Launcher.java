@@ -1,13 +1,13 @@
-import javax.swing.SwingUtilities;
+import ui.MyFrame;
+import video.VideoStatsHandler;
 
 public class Launcher {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                StatsHandler statsHandler = new StatsHandler();
-                new MyFrame(statsHandler);
-            }
+
+        //To ensure thread safety, execute the tasks in the EDT(Event Dispatching Thread)
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            VideoStatsHandler statsHandler = new VideoStatsHandler();
+            new MyFrame(statsHandler);
         });
     }
 }
