@@ -212,14 +212,19 @@ public class MyFrame extends JFrame {
             });
 
             deleteButton.addActionListener(e -> {
-                if (deletionPrompt.getConfirmation()) {
-                    videoBase.delete(videoSelectionPanel.getSelectedVideo());
+                Pseudovideo selectedVideo = videoSelectionPanel.getSelectedVideo();
+
+                if (selectedVideo != null && deletionPrompt.getConfirmation()) {
+                    videoBase.delete(selectedVideo);
                 }
             });
 
-            applyButton.addActionListener(e ->
-                videoSelectionPanel.getSelectedVideo().setMetadata(editPanel.metadataFieldPanel.iterator())
-            );
+            applyButton.addActionListener(e -> {
+                Pseudovideo selectedVideo = videoSelectionPanel.getSelectedVideo();
+
+                if (selectedVideo != null)
+                    selectedVideo.setMetadata(editPanel.metadataFieldPanel.iterator());
+            });
 
             sortByViewsButton.addActionListener(e -> videoBase.setComparator(VideoComparators.VIEW_COMPARATOR.reversed()));
             sortByTitleButton.addActionListener(e -> videoBase.setComparator(VideoComparators.TITLE_COMPARATOR));
