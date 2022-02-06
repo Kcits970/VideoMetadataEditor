@@ -221,10 +221,8 @@ public class MyFrame extends JFrame {
             applyButton.addActionListener(e -> {
                 Video selectedVideo = videoSelectionPanel.getSelectedVideo();
 
-                if (selectedVideo != null) {
-                    Video modifiedVideo = new Video(editPanel.metadataFieldPanel.iterator());
-                    videoSelectionPanel.setSelectedVideo(videoBase.edit(selectedVideo, modifiedVideo));
-                }
+                if (selectedVideo != null)
+                    videoBase.edit(selectedVideo, new Video(editPanel.metadataFieldPanel.iterator()));
             });
 
             sortByViewsButton.addActionListener(e -> videoBase.setComparator(VideoComparators.VIEW_COMPARATOR.reversed()));

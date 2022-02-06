@@ -34,17 +34,11 @@ public class VideoBase extends MyObservable {
         }
     }
 
-    public Video edit(Video originalVideo, Video newVideo) {
-        int originalIndex = videos.indexOf(originalVideo);
-
-        if (originalIndex != -1 && !videos.contains(newVideo)) {
-            videos.set(originalIndex, newVideo);
+    public void edit(Video originalVideo, Video newVideo) {
+        if (videos.contains(originalVideo)) {
+            originalVideo.set(newVideo);
             refreshSort();
-
-            return newVideo;
         }
-
-        return originalVideo;
     }
 
     public void delete(Video video) {

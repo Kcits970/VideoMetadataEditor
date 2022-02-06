@@ -29,6 +29,14 @@ public class Video {
         setDislikes(MyNumberParser.parseOptionalInt(metadata.next()).orElse(dislikes));
     }
 
+    public void set(Video v) {
+        setTitle(v.title);
+        setUploader(v.uploader);
+        setViews(v.views);
+        setLikes(v.likes);
+        setDislikes(v.dislikes);
+    }
+
     public void setTitle(String s) {
         if (s == null || s.isBlank())
             s = "NULL";
@@ -52,12 +60,4 @@ public class Video {
 
     @Override
     public String toString() {return title;}
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null) return false;
-
-        Video video = (Video) o;
-        return this.title.equals(video.title) && this.uploader.equals(video.uploader);
-    }
 }
